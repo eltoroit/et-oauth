@@ -138,9 +138,7 @@ sfdx force:org:create -f config/project-scratch-def.json --setdefaultusername --
 
 sfdx force:source:push --forceoverwrite --json
 
-sfdx force:apex:execute -f ./@ELTOROIT/scripts/shell/../apex/SetUsers.apex --json >> etLogs/apexAfterPush.json
-
-sfdx force:apex:execute -f ./@ELTOROIT/scripts/shell/../apex/SetUsers.apex --json >> etLogs/apexAfterPush.json
+sfdx force:apex:execute -f ./@ELTOROIT/scripts/apex/SetUsers.apex --json >> etLogs/apexAfterPush.json
 
 sfdx force:source:deploy -p force-apps/doNotDeploy/main/default/profiles/Admin.profile-meta.xml
 
