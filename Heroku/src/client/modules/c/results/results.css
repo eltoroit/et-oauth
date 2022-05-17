@@ -1,0 +1,17 @@
+th {
+    width: 100%;
+    vertical-align: middle;
+}
+
+td.data {
+    white-space: nowrap; padding: 5px
+}
+
+th.data {
+    font-weight: bold;
+    text-align: center;
+}
+
+.data.Id {
+    width: 10px;
+}

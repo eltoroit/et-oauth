@@ -1,0 +1,5 @@
+{
+    "html.validate.styles": false,
+    "prettier.singleQuote": true,
+    "prettier.jsxSingleQuote": true
+}

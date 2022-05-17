@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>aperez@salesforce.com</contactEmail>
+    <description>App for oAuth Demo</description>
+    <label>IandAM</label>
+    <oauthConfig>
+        <callbackUrl>https://localhost:4001/callback</callbackUrl>
+        <certificate>MIIDojCCAooCCQCz74KlnJf3HjANBgkqhkiG9w0BAQsFADCBkjELMAkGA1UEBhMCQ0ExEDAOBgNVBAgMB09OVEFSSU8xEDAOBgNVBAcMB01BUktIQU0xETAPBgNVBAoMCEVMVE9ST0lUMQ4wDAYDVQQLDAVERU1PUzEWMBQGA1UEAwwNaXQuZWx0b3JvLnd3dzEkMCIGCSqGSIb3DQEJARYVYXBlcmV6QHNhbGVzZm9yY2UuY29tMB4XDTIyMDUxNDIyNTMwNloXDTIzMDUxNDIyNTMwNlowgZIxCzAJBgNVBAYTAkNBMRAwDgYDVQQIDAdPTlRBUklPMRAwDgYDVQQHDAdNQVJLSEFNMREwDwYDVQQKDAhFTFRPUk9JVDEOMAwGA1UECwwFREVNT1MxFjAUBgNVBAMMDWl0LmVsdG9yby53d3cxJDAiBgkqhkiG9w0BCQEWFWFwZXJlekBzYWxlc2ZvcmNlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMuBdVMblZLBYIqqSejzdP7EXh24EWl/D0Aydjil7PnqRgSzT4Scuf7vZcQs+Xt/OooQs+eaOvh4NLcirzord19mGvfb/W+Z07h05IKLL5n/2zVE2GdoX9SwFFqvtAmiPrdqOixZKlpUF4DDPyG/65LxIy9Oli/TqxRG98ygxismw3SjxKpP+wsYVTuSbKOr8dsGaT0Yeo9QD7EnG1h6ehAJHLVBD8a602RvwuGFf/qQ6uFrZneyt0NHG4bKStwckj9wKszhzpnsui6zPsLJBXDdE+8cdKDcJaeJDbBr76JeLYJvY/BXC+Ddg3N1ZV02nui+ctGI5xO6ioTSrNtOVNkCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAD8fsdAIyG3aPgmX6qNI4F0txUClzf/59YdDM1My1jEKMH75mgI4QMZfyO38atPcbCSHjU1iZS3NRCmhm1zMInjFr+949PPECzaSts4DuIUFwM23y6+EeLOKXII0KgGs5ENyvGswFmVoS2g9ydrtks/BDVBQUJtTrnWQdy+BwG6/Gfkl5vNZg4ojHf4fkFGLqpm3QMmbYj+Qqa/le6EhECwlPo1M+eEFHkNBSVn0vSpxTmSkdyjC5CJX+IBIUqgxQJcc7H5zFvGvIw7PhtRQLvqLqoC5FcIzIP9mZLfe7O86EfrPNswq1jYED4xBJY3clZjqdEKSQnMmaHWGbpC3LKA==</certificate>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>true</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>OpenID</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

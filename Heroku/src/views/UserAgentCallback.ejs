@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Callback</title>
+</head>
+
+<body>
+</body>
+<script>
+    let data = {};
+    let params = new URLSearchParams(location.hash.substring(1));
+    Array.from(params.keys()).forEach(key => data[key] = params.get(key));
+    let strData = JSON.stringify(data);
+    localStorage.setItem("OAuthCallback", strData);
+    window.location = `/?page=User Agent`;
+</script>
+
+</html>

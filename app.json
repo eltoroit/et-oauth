@@ -1,0 +1,57 @@
+{
+    "name": "Demystifying OAuth Flows in Salesforce",
+    "description": "Some button description",
+    "website": "https://et-oauth.herokuapp.com",
+    "repository": "https://github.com/eltoroit/et-oauth",
+    "logo": "https://raw.githubusercontent.com/eltoroit/et-oauth/master/Media/Logo150x150.png",
+    "keywords": [
+        "node",
+        "express",
+        "static"
+    ],
+    "env": {
+        "APP_BASE": {
+            "description": "Folder that contains your Heroku web server files",
+            "value": "Heroku"
+        },
+        "SERVER": {
+            "description": "Either 'Local' or 'Heroku'. Leave as 'Heroku' when deploying in Heroku, use 'Local' if running on localhost.",
+            "value": "Heroku"
+        },
+        "OAUTH_CALLBACK": {
+            "description": "This must be updated to include the name of the app. Replace 'REPLACE-ME' with the name of your app",
+            "value": "https://REPLACE-ME.herokuapp.com/callback"
+        },
+        "OAUTH_UN": {
+            "description": "Salesforce org's username"
+        },
+        "OAUTH_PW": {
+            "description": "Salesforce org's password"
+        },
+        "OAUTH_LOGIN_URL": {
+            "description": "Salesforce org's 'My Domain' URL, provided on the 'instance' field"
+        },
+        "OAUTH_CONSUMER_KEY": {
+            "description": "Connected App generated consumer key"
+        },
+        "OAUTH_CONSUMER_SECRET": {
+            "description": "Connected App generated consumer secret"
+        },
+        "OAUTH_AUDIENCE": {
+            "description": "Salesforce's audience, either https://test.salesforce.com (sandbox, cratch org) or https://login.salesforce.com (production)",
+            "value": "https://test.salesforce.com"
+        },
+        "JWT_PRIVATE_JEY": {
+            "description": "SSL/TLS Private key, escape new lines with '\n'",
+            "value": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpQIBAAKCAQEAy4F1UxuVksFgiqpJ6PN0/sReHbgRaX8PQDJ2OKXs+epGBLNP\nhJy5/u9lxCz5e386ihCz55o6+Hg0tyKvOit3X2Ya99v9b5nTuHTkgosvmf/bNUTY\nZ2hf1LAUWq+0CaI+t2o6LFkqWlQXgMM/Ib/rkvEjL06WL9OrFEb3zKDGKybDdKPE\nqk/7CxhVO5Jso6vx2wZpPRh6j1APsScbWHp6EAkctUEPxrrTZG/C4YV/+pDq4Wtm\nd7K3Q0cbhspK3BySP3AqzOHOmey6LrM+wskFcN0T7xx0oNwlp4kNsGvvol4tgm9j\n8FcL4N2Dc3VlXTae6L5y0YjnE7qKhNKs205U2QIDAQABAoIBAQDG5Pv6Adep2v20\nCMK7vlX2OY2SljfOV7RcFfWdX+3AQ8uzBF0PSu4tz2Qy25HptWtNTQ3HqeFAvpsm\n8es4ewrsXiq1XHjR/hIDEZvUSpx3cqyX33Vxe31Nrdn22Aqp77xEHrpEZdES/2UJ\nH8ov/hcLQkoVDkWS8NkftEyz3d5QhJACP2UL/nApW1tSu8hhjytALv3Kl6JLc7Gj\nsSj4yQmzUgKPGkgV+Hsjxb3o2Qa2l1RiMBvVo0R1uV3Ve7nBWkJs39ejYnC7VYSl\n3dW5Iow4mk6/Bkkd1IIcjoQhd9oJg0XgV9DTnZvn5mMdiNAy3up5Y1pAs+F5lePi\nu7ySVL5BAoGBAOgRmyZXSgKGftMzIBgaGuVqQ2cWqliqqZuktTWOc9Ji6pxD7Af6\nmRUJJR8HCGB5HhVrAvpjSB85ssZP0CH65XjFcvHmxWUEwcM7ANVqV4PtxkPm9+lS\ny9pv3sswee8swcsqCLAMzvv2RnA4p63i9fTyXOm0qua8BGZwC7DQCgAdAoGBAOB9\n0HV63XFttUpn5INTc84cFei9jLpdbJNzFhj4x6wWVLCv4s53itJfD5v6PkOO0k/3\nBXyKFZk7g/rcW0ioWXDE4RVEVIKowkgi7bmWobu5YwqSJ4yVW/XoEDCwuMUwq24t\nX5VzqSAOpc2XMVtYfddAngxBBXLV8ozLKJqgfALtAoGBAL2pTeyK4FCqDNKc8Pjh\ntOOT8hw5WOT4LX+nn/VyQ9RIxUcK98cZlqyreawe+kimE+EbQSbTpyjl5ebPaeGr\nhIksjaGHogHKXnUpLqg8reODm0r5Y9lLspEGZsYXC0Beis94vfrrrOodPzoOA3RI\njg0vWqIh5p6GQO5bWiKaE+I9AoGASNMHqNSuuXkpcnW5f5C25Inf4Zx75okgC8Ut\nyfQKchzcZGTqYqgM9Km52pOXVzshpqcvtHLnBspzyhFp22whd5+mlMuRzsEIJXaP\nP8FJvigppOg8xDI/nsolVmY9ylo7goZdl5Hpr2iRCNyfOk6+o/FmU/tT1Sjqghn1\nlhOxpxECgYEAxXQWPHNNUUfqgN/TrFKivvEXNSQrJF1R5H47BwOuCHs9TL8m8KNu\nTZyQDDdMEEJFp4C7SOxq7GTPooezQqjr+4fbHRa9lr4XPBQxg3xZ9GnOChNMLvw2\nCcBzcV2XiuMjmUCj7RETgukCV/eWEejaZK5Kpk/PAkxqPySdSWZNFW0=\n-----END RSA PRIVATE KEY-----"
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "https://github.com/eltoroit/etbp-heroku-buildpack-monorepo"
+        },
+        {
+            "url": "heroku/nodejs"
+        }
+    ]
+}

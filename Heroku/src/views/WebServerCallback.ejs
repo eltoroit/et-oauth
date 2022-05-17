@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Callback</title>
+</head>
+
+<body>
+</body>
+<script>
+    let strData = `<%= data %>`;
+    strData = strData.replace(/&#34;/g, `"`);
+    localStorage.setItem("OAuthCallback", strData);
+    window.location = `/?page=Web Server`;
+</script>
+
+</html>
