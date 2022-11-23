@@ -28,7 +28,7 @@ This folder has the certificates that will be used on different places:
 
 - The private key is loaded via Config Vars (not files) when running in Heroku. This is useful because the code does not need to be deployed if the certificate changes.
 
-## Heroku
+## Webserver
 
 - This folder contains the code for the web application demo built with Node.js (back-end) and LWC (front-end).
 
@@ -40,8 +40,12 @@ This folder has the certificates that will be used on different places:
 
 1. Clone this repo on your local machine
 2. Generate the SSL certificates
-3. Open The Salesforce folder in VS Code as a Salesforce project to create and configure the scratch org
-4. Create a Heroku app using the Heroku Button
+3. Create a scratch org
+   - Open The Salesforce folder in VS Code as a Salesforce project to create and configure the scratch org
+4. Running the web server:
+   - Use the Heroku app built for the demo ([click here](https://et-oauth.herokuapp.com/?page=Who%20Am%20I?))
+   - Run a Nodejs web server locally (https://localhost:4001)
+   - Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) to create your own Heroku app
 
 ## Clone this repo on your local machine
 
@@ -50,7 +54,7 @@ Cloning this project locally will help you
 - Create the SSL certificates
 - Create the Salesforce Scratch org
 
-Once the repo is cloned, you can open the Salesforce folder in VS code and create a scratch org. If you also want to execute the web server locally, then open the Heroku project in a separate VS Code window. If you prefer to run the web application in Heroku, then you can use the Heroku button I provide below.
+Once the repo is cloned, you can open the Salesforce folder in VS code and create a scratch org. If you also want to execute the web server locally, then open the Webserver project in a separate VS Code window. If you prefer to run the web application in Heroku, then you can use the Heroku button provided.
 
 ## Generate the SSL certificates
 
@@ -71,7 +75,7 @@ follow these steps to create your own certificates:
 which openssl
 ```
 
-2. Create a new folder for the certificates `mkdir MyCerts` and change to it `cd MyCerts`
+2. Create a new folder for the certificates `mkdir Cert` and change to it `cd Cert`
 
 3. Generate your private key, store the key in a file named **private.key.** You may want to change the password to something a bit more secure (current value is **SomePassword**).
 
@@ -79,7 +83,7 @@ which openssl
 openssl genrsa -des3 -passout pass:SomePassword 2048 | openssl rsa -passin pass:SomePassword -out private.key
 ```
 
-1. Generate a CSR (certificate signing request) using the **private.key** file. The CSR can be sent to a Certificate Authority (CA) to create the public certificate or create your own self-signed certificate.
+4. Generate a CSR (certificate signing request) using the **private.key** file. The CSR is used to generate a certificate, you could either send it to a Certificate Authority (CA) to create a signed certificate or you can create your own self-signed certificate. In either case, you are going to need a CSR, so let's create it:
 
 ```
 openssl req -new -key private.key -out certificate.csr
@@ -101,7 +105,7 @@ to be sent with your certificate request
 A challenge password []:
 ```
 
-You can see some of this information when you load the certificate in the Connected App in Salesforce, or free online tools like this one: https://www.sslshopper.com/ssl-certificate-tools.html
+You can see some of this information when you load the certificate in the Connected App in Salesforce, or using free tools online like these ones: https://www.sslshopper.com/ssl-certificate-tools.html, https://ssltools.godaddy.com/views
 
 5. Generate a self-signed digital certificate from the **private.key** and **certificate.csr** files. Store the certificate in a file called **public.crt**
 
@@ -114,12 +118,14 @@ openssl x509 -req -sha256 -days 365 -in certificate.csr -signkey private.key -ou
 - Since this is a self-signed certificate, when you browse the local web server Chrome is going to give you a security warning. If so, then you may type `thisisunsafe` and it will let you in :-)
 
 <center>
+
 ![Self-signed certificates will show a warning on the browser](Media/SelfSignedCettificateSmall.png)
+
 </center>
 
-# Create and configure the Salesforce scratch org
+# Create a scratch org
 
-Open the Salesforce project in VS Code.
+Create and configure the Salesforce scratch org. First, open the SFDX project in VS Code located in the `Salesforce` folder.
 
 ## If you are running on a Mac...
 
@@ -151,23 +157,63 @@ sfdx force:user:password:generate --json
 sfdx force:user:display --json
 ```
 
-## Configuration settings
+## Review settings
 
 The end of the script (for Mac) or the last sfdx instruction (for Windows) should display something like this:
 
 ```
 {
-  "accessToken": "00D230000004gLo!AQMAQKXb.IrEl3g.7iivngGoLU6EdkoiMk7pjeonT49JYQHfMsVya3pkkOPeTm4u0t8Swn8RTlyFtYJGHJKyGx59FkJOeMOB",
-  "id": "00523000002hXUbAAM",
-  "instanceUrl": "https://data-site-371.my.salesforce.com",
-  "loginUrl": "https://CS28.salesforce.com",
-  "orgId": "00D230000004gLoEAI",
-  "profileName": "System Administrator",
-  "username": "test-ndhyp78x26gt@example.com",
-  "alias": "soDEMO",
-  "password": "i$6cfwceBklgq"
-}
+    "accessToken": "00D520000003qKG!ARAAQCoo8FrwTdZ2.muNfIJ.FGp2tN2FlI8iDx3A_P1k7NRI3G5uQOQ1YijfeOqRdLfYeyLPESBlYDRGnn9iheuz7UCDiCSL",
+    "id": "00552000006mDtxAAE",
+    "instanceUrl": "https://tahoe-lake-2939.scratch.my.salesforce.com",
+    "loginUrl": "https://CS170.salesforce.com",
+    "orgId": "00D520000003qKGEAY",
+    "profileName": "System Administrator",
+    "username": "test-pmhvpx6tc3io@example.com",
+    "alias": "soDEMO",
+    "password": "bGucb5)eegeix"
+  }
 ```
+
+# Running the web server
+
+As mentioned above, there are 3 options you could use:
+
+- Use the Heroku app built for the demo
+- Run a Nodejs web server locally
+- Click the Heroku button to create your own Heroku app
+
+You need to configure the settings for the web server app, but each o them is done slightly different. Let's review that.
+
+## Use the Heroku app built for the demo
+
+You can [use this Heroku app](https://et-oauth.herokuapp.com/?page=Who%20Am%20I?) to test the settings for your own scratch org, just make sure you set settings in the `Settings` tab to correspond to your org. These settings will not be preserved if you reload the page.
+
+<center>
+
+![Change the settings for the predefined app](Media/HerokuSettingsSmall.png)
+
+</center>
+
+## Run a Nodejs web server locally
+
+If you prefer to run this Nodejs app on your own computer, you will need to follow these steps
+
+1. Execute `npm install`
+2. Execute `npm run build:client`
+3. Execute `npm run ELTOROIT_SERVE`
+
+## Click the Heroku button to create your own Heroku app
+
+- Use the Heroku app built for the demo ([click here](https://et-oauth.herokuapp.com/?page=Who%20Am%20I?))
+- Run a Nodejs web server locally (https://localhost:4001)
+- Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) to create your own Heroku app
+
+### Local webserver
+
+If you are running the web application locally, you will need to update the `.env` file on the heroku folder. Since
+
+### Heroku
 
 If you are running the web application locally, you will need to update the `.env` file on the heroku folder. If you are running this application on the Heroku server, you will need to enter this information:
 
