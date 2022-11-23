@@ -19,8 +19,17 @@
                             <div class="pageSize">
                                 <c-settings settings={settings} onsettingschange={onSettingsChanged}>
                                     <div class="slds-align_absolute-center slds-text-heading_medium" style="color: blue">
-                                        This could be permanently changed in the<br />
-                                        .env file (localhost) or the Config Vars (Heroku)
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_8-of-12">
+                                                This could be permanently changed in the .env file (running locally using localhost) or the Config Vars (in your own Heroku web app)
+                                            </div>
+                                            <div class="slds-col slds-size_8-of-12">
+                                                You can create your own Heroku app using this button...
+                                                <a href="https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Feltoroit%2Fet-oauth">
+                                                    <img src="/resources/HerokuButton.png" style="width: 100%; height: auto; max-height: 100%; max-width: 100%" />
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </c-settings>
                             </div>
