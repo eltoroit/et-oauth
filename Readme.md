@@ -175,7 +175,7 @@ The end of the script (for Mac) or the last sfdx instruction (for Windows) shoul
   }
 ```
 
-Keep this values handy because you will need them later.
+Keep this values handy because you will need them later. If you need to get them back, you can execute `sfdx force:user:display --json`
 
 There are a few more things that are required to be done manually on the Salesforce org, since it's not part of the deployable metadata. They include:
 
@@ -185,6 +185,8 @@ There are a few more things that are required to be done manually on the Salesfo
   - Make sure the **Enable for Device Flow** checkbox is selected
   - If you are running this application on Heroku (or other server), you will need to add the URL address (**https://`domain`/callback**) on the callback URL
   - Click Save
+
+
 - On the Setup menu, go to `Security > CORS`
   - `Cross-Origin Resource Sharing (CORS) Policy Settings`
     - Click the **Edit** button
@@ -253,12 +255,13 @@ You can [use this Heroku app](https://et-oauth.herokuapp.com/?page=Who%20Am%20I?
 
 If you prefer to run this Nodejs app on your own computer, you will need to follow these steps
 
-1. Execute `npm install` to install node dependencies
-2. Execute `npm run build:client` to build HTML site from LWC
-3. Execute `npm run ELTOROIT_SERVE` to serve the files and run the application
-4. Update the `.env` file as described above
+1. Execute `npm install --global rollup` to install rollup whichis required to compile LWC
+2. Execute `npm install` to install the local node dependencies
+3. Execute `npm run build:client` to build HTML site from LWC
+4. Execute `npm run ELTOROIT_SERVE` to serve the files and run the application
+5. Update the `.env` file as described above
    - Note since this file has secured information is never a god idea to add that to a repo (much less a public one) so I have created a file named `OAuth.env` that you can use to clone into a new file named `.env` and save the values there.
-5. Open a browser and navigate to `https://localhost:4001`, it's recommended to use localhost instead of 127.0.0.1.
+6. Open a browser and navigate to `https://localhost:4001`, it's recommended to use localhost instead of 127.0.0.1.
 
 ## Click the Heroku button to create your own Heroku app
 
