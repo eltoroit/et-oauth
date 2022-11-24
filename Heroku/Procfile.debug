@@ -1,1 +1,0 @@
-web: node  --inspect=9230 --trace-warnings ./src/server/_WEB.js

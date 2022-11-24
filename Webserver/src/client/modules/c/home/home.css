@@ -1,0 +1,8 @@
+.pageSize {
+	height: calc(100vh - 250px);
+	width: 100%;
+}
+
+.resource:hover {
+	background-color: #b0c4de;
+}

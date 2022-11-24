@@ -1,0 +1,22 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "ELTOROIT Compile LWC",
+			"type": "shell",
+			"command": "./build.zsh",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "new",
+				"clear": false,
+				"focus": true,
+				"showReuseMessage": false,
+			},
+			"problemMatcher": []
+		}
+	]
+}

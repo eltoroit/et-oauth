@@ -1,0 +1,32 @@
+<template>
+    <c-settings settings={settings} keys={keys}>
+        <lightning-button label="Authorize Salesforce" variant="brand" onclick={onLoginClick}></lightning-button>
+    </c-settings>
+    <template if:true={prompt}>
+        <div class="slds-align_absolute-center slds-text-heading_medium">
+            <table>
+                <tr>
+                    <th>URL</th>
+                    <td>
+                        <a href={prompt.url} target="_blank">{prompt.url}</a><br />
+                        <div data-qr="QRCode"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="slds-p-bottom_x-large"></td>
+                </tr>
+                <tr>
+                    <th>Code:</th>
+                    <td>{prompt.code}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="slds-p-bottom_x-large"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="slds-p-bottom_x-large">{timer.msg}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </template>
+</template>

@@ -1,0 +1,59 @@
+<template>
+    <template if:true={oauthData.strData}>
+        <lightning-button label="Logout" variant="destructive" onclick={onLogoutClick}></lightning-button>
+        <br />
+    </template>
+    <c-tabset variant="vertical" default-tab="OAuth Response">
+        <template if:true={oauthData.strData}>
+            <c-tab label="Server&nbsp;Response">
+                <pre>{oauthData.strData}</pre>
+            </c-tab>
+        </template>
+        <template if:true={oauthData.accounts}>
+            <c-tab label="Accounts">
+                <table border="1">
+                    <tr>
+                        <th class="data Id">Id</th>
+                        <th class="data">Name</th>
+                        <th class="data">Phone</th>
+                        <th class="data">Type</th>
+                    </tr>
+                    <template for:each={oauthData.accounts.records} for:item="act">
+                        <tr key={act.Id}>
+                            <td class="data Id">{act.Id}</td>
+                            <td class="data">{act.Name}</td>
+                            <td class="data">{act.Phone}</td>
+                            <td class="data">{act.Type}</td>
+                        </tr>
+                    </template>
+                </table>
+                <!-- <pre>{oauthData.strAccounts}</pre> -->
+            </c-tab>
+        </template>
+        <template if:true={oauthData.strOpenID}>
+            <c-tab label="User (OpenID)">
+                <pre>{oauthData.strOpenID}</pre>
+            </c-tab>
+        </template>
+        <template if:true={oauthData.strUser}>
+            <c-tab label="User (Id)">
+                <pre>{oauthData.strUser}</pre>
+            </c-tab>
+        </template>
+        <template if:true={oauthData.loginUrl}>
+            <c-tab label="Browser Login">
+                <ul>
+                    <li>Username/password flow is not allowed</li>
+                    <li>Must have <b>Web</b> or <b>Full</b> scopes<br /></li>
+                </ul>
+                Login Url: <a href={oauthData.loginUrl} target="_blank">{oauthData.loginUrl}</a>
+            </c-tab>
+        </template>
+        <template if:true={oauthData.strRefreshToken}>
+            <c-tab label="Refresh Token">
+                <pre>{oauthData.strRefreshToken}</pre>
+                <lightning-button label="Re-authorize Salesforce" variant="brand" onclick={onRefreshClick}> </lightning-button>
+            </c-tab>
+        </template>
+    </c-tabset>
+</template>
