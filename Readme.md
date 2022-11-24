@@ -175,61 +175,7 @@ The end of the script (for Mac) or the last sfdx instruction (for Windows) shoul
   }
 ```
 
-# Running the web server
-
-As mentioned above, there are 3 options you could use:
-
-- Use the Heroku app built for the demo
-- Run a Nodejs web server locally
-- Click the Heroku button to create your own Heroku app
-
-You need to configure the settings for the web server app, but each o them is done slightly different. Let's review that.
-
-## Use the Heroku app built for the demo
-
-You can [use this Heroku app](https://et-oauth.herokuapp.com/?page=Who%20Am%20I?) to test the settings for your own scratch org, just make sure you set settings in the `Settings` tab to correspond to your org. These settings will not be preserved if you reload the page.
-
-<center>
-
-![Change the settings for the predefined app](Media/HerokuSettingsSmall.png)
-
-</center>
-
-## Run a Nodejs web server locally
-
-If you prefer to run this Nodejs app on your own computer, you will need to follow these steps
-
-1. Execute `npm install`
-2. Execute `npm run build:client`
-3. Execute `npm run ELTOROIT_SERVE`
-
-## Click the Heroku button to create your own Heroku app
-
-- Use the Heroku app built for the demo ([click here](https://et-oauth.herokuapp.com/?page=Who%20Am%20I?))
-- Run a Nodejs web server locally (https://localhost:4001)
-- Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) to create your own Heroku app
-
-### Local webserver
-
-If you are running the web application locally, you will need to update the `.env` file on the heroku folder. Since
-
-### Heroku
-
-If you are running the web application locally, you will need to update the `.env` file on the heroku folder. If you are running this application on the Heroku server, you will need to enter this information:
-
-| Configuration         | SFDX                                 | Value                                                                                                       |
-| --------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| OAUTH_UN              | username                             | test-ndhyp78x26gt@example.com                                                                               |
-| OAUTH_PW              | password                             | i$6cfwceBklgq                                                                                               |
-| OAUTH_LOGIN_URL       | instanceUrl                          | https://data-site-371.my.salesforce.com                                                                     |
-| OAUTH_CONSUMER_KEY    | Salesforce connected App             | 3MVG9TYG6AjyhS_IClk1EJdydAg4EiHHwsbwkTaQKiTkcBlO_NpzQkllzOCuGgOhLXY37ETxnRNOZAHtOuiyr                       |
-| OAUTH_CONSUMER_SECRET | Salesforce connected App             | AA514E8F7044D39BF2E6D93B2A0C9A58BBF290DCCE84FCBAAFBA636A7EA31715                                            |
-| OAUTH_CALLBACK        | https://`domain`/callback            | https://localhost:4001/callback                                                                             |
-| OAUTH_AUDIENCE        | https://`test\|login`.salesforce.com | https://test.salesforce.com                                                                                 |
-| SERVER                |                                      | Either 'Heroku' or 'local', depending on how you are running this                                           |
-| JWT_PRIVATE_JEY       |                                      | Private key in text (only required if running on Heroku)                                                    |
-| APP_BASE              |                                      | Please enter 'Heroku', which is the folder name for the Heroku project (only required if running on Heroku) |
-| PORT                  |                                      | I am using port '4000' (only required if running on local)                                                  |
+Keep this values handy because you will need them later.
 
 There are a few more things that are required to be done manually on the Salesforce org, since it's not part of the deployable metadata. They include:
 
@@ -253,42 +199,69 @@ There are a few more things that are required to be done manually on the Salesfo
 
 - Security CORS settings must be done in the org that you are logging into, not the org where the Connected App is configured.
 
-## Heroku
+# Running the web server
 
-Use this Heroku button to create a Heroku application
+## Settings
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+Before you can use the web server to test the scratch org (or any org) you must set the correct values. These are the settings that are required to change:
 
-You must set the configuration variables from the information displayed after the scratch org is created (see table above)
+| Configuration         | SFDX                        | Example                                                                                                               |
+| --------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| OAUTH_UN              | username                    | test-ndhyp78x26gt@example.com                                                                                         |
+| OAUTH_PW              | password                    | i$6cfwceBklgq                                                                                                         |
+| OAUTH_LOGIN_URL       | instanceUrl                 | https://data-site-371.my.salesforce.com (Make sure you use the full `My Domain` for a production or scratch org)      |
+| OAUTH_CONSUMER_KEY    | Salesforce connected App    | 3MVG9TYG6AjyhS_IClk1EJdydAg4EiHHwsbwkTaQKiTkcBlO_NpzQkllzOCuGgOhLXY37ETxnRNOZAHtOuiyr                                 |
+| OAUTH_CONSUMER_SECRET | Salesforce connected App    | AA514E8F7044D39BF2E6D93B2A0C9A58BBF290DCCE84FCBAAFBA636A7EA31715                                                      |
+| OAUTH_CALLBACK        | https://`domain`/callback   | https://localhost:4001/callback (Use https://et-oauth.herokuapp.com/callback if you are not using your own web sever) |
+| OAUTH_AUDIENCE        | https://test.salesforce.com | https://test.salesforce.com or https://login.salesforce.com if you are using a production org                         |
+| SERVER                | Heroku                      | Either `Heroku` or `local`, depending on how you are running this                                                     |
 
-**Notes:**
+If you are running your own Heroku app, you will have to set these values too:
 
-- If you are running the application locally,
-  - The HTML files need to be created from the LWC source code using `npm run build:client`
-  - The webserver can be started with this command `npm run ELTOROIT_SERVE`
-  - Remember to use `https://localhost:4001` instead of **https://127.0.0.1:4001**
+| Configuration   | SFDX | Example                                                                |
+| --------------- | ---- | ---------------------------------------------------------------------- |
+| JWT_PRIVATE_JEY |      | Private certificate key in text format                                 |
+| APP_BASE        |      | Please enter 'Heroku', which is the folder name for the Heroku project |
 
-# Enhancements...
+If you are running you own Heroku app, you will have to set these values too:
 
-## Device Flow
+| Configuration | SFDX | Example                                                                       |
+| ------------- | ---- | ----------------------------------------------------------------------------- |
+| PORT          | 4000 | The HTTP port number, HTTPS will be one higher (in this case it will be 4001) |
 
-- Open iPhone and go to my website (myDevice.com)
-- Using Bluetooth, talk to the device (handshake)
-- Create a new account (username, phone)
-- iPhone asks for WiFi credentials
-- iPhone gives the device credentials for Wifi network over bluetooth
-- Device establishes internet connection
-- Device starts oAuth Device flow with Salesforce
-- Device receives Salesforce URL + code
-- Device sends URL + code to myDevice.com
-- iPhone recieves URL + code from myDevice.com
-- iPhone opens a browser on the URL
-- myDevice.com sends SMS to iPhone
-- User on iPhone accepts code received via SMS (automatically)
-- User must login to Salesforce (LastPass)
+## How to set them?
 
--- SMS: https://developer.apple.com/news/?id=z0i801mg
+As mentioned above, there are 3 options you could use:
 
-## How to use this on Experience cloud?
+- Use the Heroku app built for the demo
+- Run a Nodejs web server locally
+- Click the Heroku button to create your own Heroku app
 
-- https://help.salesforce.com/s/articleView?id=000332032&type=1
+You need to configure the settings for the web server app, but each o them is done slightly different. Let's review that.
+
+## Use the Heroku app built for the demo
+
+You can [use this Heroku app](https://et-oauth.herokuapp.com/?page=Who%20Am%20I?) to test the settings for your own org, just make sure you set settings in the `Settings` tab to correspond to your org. These settings will not be preserved if you reload the page.
+
+<center>
+
+![Change the settings for the predefined app](Media/HerokuSettingsSmall.png)
+
+</center>
+
+## Run a Nodejs web server locally
+
+If you prefer to run this Nodejs app on your own computer, you will need to follow these steps
+
+1. Execute `npm install` to install node dependencies
+2. Execute `npm run build:client` to build HTML site from LWC
+3. Execute `npm run ELTOROIT_SERVE` to serve the files and run the application
+4. Update the `.env` file as described above
+   - Note since this file has secured information is never a god idea to add that to a repo (much less a public one) so I have created a file named `OAuth.env` that you can use to clone into a new file named `.env` and save the values there.
+5. Open a browser and navigate to `https://localhost:4001`, it's recommended to use localhost instead of 127.0.0.1.
+
+## Click the Heroku button to create your own Heroku app
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) 
+
+The Heroku button can be used to create your own Heroku app. During the creation process, make sure to populate the settings values with the correct information. If you need to change them after the app is created you can go to `Settings` > `Reveal Config Vars` and change them there.
