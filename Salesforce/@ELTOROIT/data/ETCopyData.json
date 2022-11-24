@@ -4,57 +4,57 @@
   "sObjectsData": [
     {
       "name": "Opportunity",
-      "externalIdField": null,
       "ignoreFields": "OwnerId",
-      "maxRecords": -1,
-      "orderBy": null,
+      "externalIdField": null,
       "twoPassReferenceFields": "",
-      "where": null
+      "where": null,
+      "orderBy": null,
+      "maxRecords": -1
     },
     {
       "name": "Case",
-      "externalIdField": null,
       "ignoreFields": "OwnerId",
-      "maxRecords": -1,
-      "orderBy": null,
+      "externalIdField": null,
       "twoPassReferenceFields": "",
-      "where": null
+      "where": null,
+      "orderBy": null,
+      "maxRecords": -1
     },
     {
       "name": "Lead",
-      "externalIdField": null,
       "ignoreFields": "OwnerId",
-      "maxRecords": -1,
-      "orderBy": null,
+      "externalIdField": null,
       "twoPassReferenceFields": "",
-      "where": null
+      "where": null,
+      "orderBy": null,
+      "maxRecords": -1
     },
     {
       "name": "Contact",
-      "externalIdField": null,
       "ignoreFields": "OwnerId",
-      "maxRecords": -1,
-      "orderBy": null,
+      "externalIdField": null,
       "twoPassReferenceFields": "",
-      "where": null
+      "where": null,
+      "orderBy": null,
+      "maxRecords": -1
     },
     {
       "name": "Campaign",
-      "externalIdField": null,
       "ignoreFields": "OwnerId",
-      "maxRecords": -1,
-      "orderBy": null,
+      "externalIdField": null,
       "twoPassReferenceFields": "",
-      "where": null
+      "where": null,
+      "orderBy": null,
+      "maxRecords": -1
     },
     {
       "name": "Account",
-      "externalIdField": null,
       "ignoreFields": "OwnerId",
-      "maxRecords": -1,
-      "orderBy": null,
+      "externalIdField": null,
       "twoPassReferenceFields": "",
-      "where": null
+      "where": null,
+      "orderBy": null,
+      "maxRecords": -1
     }
   ],
   "sObjectsMetadata": [],
@@ -65,8 +65,7 @@
   "ignoreFields": null,
   "copyToProduction": false,
   "twoPassReferenceFields": null,
-  "maxRecordsEach": -1,
   "deleteDestination": false,
   "useBulkAPI": false,
-  "pollingTimeout": 100000
+  "bulkPollingTimeout": null
 }
